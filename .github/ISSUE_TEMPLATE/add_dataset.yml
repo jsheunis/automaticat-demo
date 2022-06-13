@@ -1,0 +1,15 @@
+name: Add dataset
+description: Add a new dataset to the catalog
+title: "Add dataset"
+assignees:
+- jsheunis
+labels: [triage]
+body:
+  - type: input
+    id: url
+    attributes:
+      label: Dataset URL
+      description: "The publicly available URL of your DataLad dataset"
+      placeholder: "Example: https://github.com/psychoinformatics-de/studyforrest-data-structural.git"
+    validations:
+      required: true
