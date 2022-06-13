@@ -16,13 +16,11 @@ jobs:
         sudo apt-get update -qq
         sudo apt-get install eatmydata
         sudo eatmydata apt-get install git-annex-standalone
-        
+
     - name: Set up environment
       run: |
         git config --global user.email "test@github.land"
         git config --global user.name "GitHub Almighty"
-
-    - uses: actions/checkout@v3
 
     - uses: stefanbuck/github-issue-praser@v2
       id: issue-parser
@@ -38,6 +36,10 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+
+    # - name: Clone the superdataset
+    #   run: |
+    #     datalad clone "https://github.com/${{ github.repository }}.git"
 
     - name: Checkout datalad-catalog
       uses: actions/checkout@v3
