@@ -31,15 +31,17 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Install datalad-catalog
+    - name: Checkout datalad-catalog
       uses: actions/checkout@v3
       with:
         repository: datalad/datalad-catalog
         path: datalad-catalog
+      
+    - name: Install datalad-catalog
       run: |
         pip install -e datalad-catalog/
 
-    - name: Clone fairly-big-catalog-workflow
+    - name: Checkout fairly-big-catalog-workflow
       uses: actions/checkout@v3
       with:
         repository: jsheunis/fairly-big-catalog-workflow
