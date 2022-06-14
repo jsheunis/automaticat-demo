@@ -57,7 +57,7 @@ jobs:
 
     - name: Add subdataset
       run: |
-        VARURL=$(echo '${{ steps.issue-parser.outputs.jsonString }}' | jq '.url')
+        VARURL=$(echo '${{ steps.issue-parser.outputs.jsonString }}' | jq -r '.url')
         echo "$VARURL"
         datalad clone -d . "$VARURL"
         datalad save -m "adds dataset to catalog"
