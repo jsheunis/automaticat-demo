@@ -64,5 +64,5 @@ jobs:
         VARURL=$(echo '${{ steps.issue-parser.outputs.jsonString }}' | jq -r '.url')
         echo "$VARURL"
         datalad clone -d . "$VARURL"
-        datalad save -m "adds dataset to catalog"
-        datalad push --to github
+        datalad save -m "adds $VARURL to catalog"
+        datalad push --to origin
