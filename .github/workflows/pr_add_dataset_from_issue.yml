@@ -48,6 +48,7 @@ jobs:
       run: |
         VARURL=$(echo '${{ steps.issue-parser.outputs.jsonString }}' | jq -r '.url')
         echo "$VARURL"
+        echo "::set-env name=VARURL::$VARURL"
         datalad clone -d . "$VARURL"
         datalad save -m "adds $VARURL to catalog"
     - name: Create Pull Request
