@@ -30,13 +30,13 @@ jobs:
         run: |
           git config --global user.email "test@github.land"
           git config --global user.name "GitHub Almighty"
-      - name: Install git annex
-        shell: bash
-        run: |
-          bash <(wget -q -O- http://neuro.debian.net/_files/neurodebian-travis.sh)
-          sudo apt-get update -qq
-          sudo apt-get install eatmydata
-          sudo eatmydata apt-get install git-annex-standalone
+      # - name: Install git annex
+      #   shell: bash
+      #   run: |
+      #     bash <(wget -q -O- http://neuro.debian.net/_files/neurodebian-travis.sh)
+      #     sudo apt-get update -qq
+      #     sudo apt-get install eatmydata
+      #     sudo eatmydata apt-get install git-annex-standalone
       - name: Set up Python 3.9
         uses: actions/setup-python@v1
         with:
