@@ -1,0 +1,59 @@
+# This workflow runs when an issue label is changed to 'good-to-go'
+# It parses a variable ('url') from the issue using a defined template
+# It uses datalad to add the dataset at this url as a subdataset to the superdataset in this repository
+# Lastly, it creates a pull request to main
+
+name: pr_add_dataset_from_issue
+
+on:
+  issues:
+    types: labeled
+
+jobs:
+  build:
+    if: ${{ github.event.label.name == 'good-to-go' }}
+    runs-on: ubuntu-latest
+    steps:
+    - name: Set up environment
+      run: |
+        git config --global user.email "test@github.land"
+        git config --global user.name "GitHub Almighty"
+    
+    - name: Install git annex
+      shell: bash
+      run: |
+        bash <(wget -q -O- http://neuro.debian.net/_files/neurodebian-travis.sh)
+        sudo apt-get update -qq
+        sudo apt-get install eatmydata
+        sudo eatmydata apt-get install git-annex-standalone
+    
+    - uses: actions/checkout@v3
+
+    - uses: stefanbuck/github-issue-praser@v2
+      id: issue-parser
+      with:
+        template-path: .github/ISSUE_TEMPLATE/add_dataset.yml
+    
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.9
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install --upgrade datalad
+
+    - name: Add subdataset
+      run: |
+        VARURL=$(echo '${{ steps.issue-parser.outputs.jsonString }}' | jq -r '.url')
+        echo "$VARURL"
+        datalad clone -d . "$VARURL"
+        datalad save -m "adds $VARURL to catalog"
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v4
+      with:
+        branch: enh/action-add-dataset
+        commit-message: "Add subdataset - $VARURL"
+        title: "Add subdataset - $VARURL"
+        base: main
