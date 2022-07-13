@@ -48,13 +48,12 @@ jobs:
       run: |
         VARURL=$(echo '${{ steps.issue-parser.outputs.jsonString }}' | jq -r '.url')
         echo "$VARURL"
-        echo "::set-env name=VARURL::$VARURL"
         datalad clone -d . "$VARURL"
         datalad save -m "adds $VARURL to catalog"
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v4
       with:
         branch: enh/action-add-dataset
-        commit-message: "Add subdataset - $VARURL"
-        title: "Add subdataset - $VARURL"
+        commit-message: "Add subdataset - $(echo '${{ steps.issue-parser.outputs.jsonString }}' | jq -r '.url')"
+        title: "Add subdataset - $(echo '${{ steps.issue-parser.outputs.jsonString }}' | jq -r '.url')"
         base: main
