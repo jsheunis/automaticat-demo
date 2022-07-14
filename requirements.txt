@@ -1,2 +1,3 @@
 datalad >= 0.17.0
 datalad-metalad >= 0.3.10
+git+https://github.com/datalad/datalad-neuroimaging.git@refs/pull/104/head
