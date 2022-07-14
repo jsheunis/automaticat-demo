@@ -54,14 +54,14 @@ fi
 # extractor_name
 extractor_name=$(jq '.extractor_name' <<< $METADATA )
 
-if [[ ${extractor_name} == *"metalad_core"* ]];then
+if [[ ${extractor_name} == *"metalad_core"* ]]; then
     $BASEDIR/_core2catalog.sh $METADATA $EXTRACTED $GRAPH
-elif [[ ${extractor_name} == *"bids_dataset"* ]];then
+elif [[ ${extractor_name} == *"bids_dataset"* ]]; then
     $BASEDIR/_bidsdataset2catalog.sh $METADATA $EXTRACTED $GRAPH
-elif [[ ${extractor_name} == *"studyminimeta"* ]];then
+elif [[ ${extractor_name} == *"studyminimeta"* ]]; then
     $BASEDIR/_studyminimeta2catalog.sh $METADATA $EXTRACTED $GRAPH
-elif [[ ${extractor_name} == *"datacite_gin"* ]];then
+elif [[ ${extractor_name} == *"datacite_gin"* ]]; then
     $BASEDIR/_datacitegin2catalog.sh $METADATA $EXTRACTED $GRAPH
 else
-# 
+    echo "no translator called"
 fi
