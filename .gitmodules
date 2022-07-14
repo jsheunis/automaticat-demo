@@ -13,3 +13,8 @@
 	url = https://github.com/psychoinformatics-de/studyforrest-paper-speechannotation
 	datalad-id = 8d2eaa04-71a6-11ea-aca0-bc5ff42cf5b9
 	datalad-url = https://github.com/psychoinformatics-de/studyforrest-paper-speechannotation
+[submodule "studyforrest-data-phase2"]
+	path = studyforrest-data-phase2
+	url = https://github.com/psychoinformatics-de/studyforrest-data-phase2
+	datalad-id = 5eaff716-54eb-11e8-803d-a0369f7c647e
+	datalad-url = https://github.com/psychoinformatics-de/studyforrest-data-phase2
