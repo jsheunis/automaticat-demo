@@ -113,11 +113,6 @@ jobs:
     - name: Install datalad-catalog
       run: |
         pip install -e datalad-catalog/
-    - name: Checkout fairly-big-catalog-workflow
-      uses: actions/checkout@v3
-      with:
-        repository: jsheunis/fairly-big-catalog-workflow
-        path: fairly-big-catalog-workflow
     - name: Checkout catalog branch
       uses: actions/checkout@v3
       with:
@@ -125,15 +120,15 @@ jobs:
         path: catalogbranch
     - name: Run workflow for extraction+translation+catalog-update
       run: |
-        chmod -R u+rwx fairly-big-catalog-workflow/*
+        chmod -R u+rwx code/*
         # Extract+translate+add metadata for new subdataset
-        fairly-big-catalog-workflow/local/local_extract_datasetlevel.sh ${{needs.check.outputs.subds}} extracted_sub_metadata.txt
-        fairly-big-catalog-workflow/local/local_translate_metadata.sh extracted_sub_metadata.txt translated_sub_metadata.txt
+        code/local/local_extract_datasetlevel.sh ${{needs.check.outputs.subds}} extracted_sub_metadata.txt
+        code/local/local_translate_metadata.sh extracted_sub_metadata.txt translated_sub_metadata.txt
         datalad catalog add -c catalogdir -m translated_sub_metadata.txt
 
         # Extract+translate+add metadata for updated version of superdataset
-        fairly-big-catalog-workflow/local/local_extract_datasetlevel.sh . extracted_super_metadata.txt
-        fairly-big-catalog-workflow/local/local_translate_metadata.sh extracted_super_metadata.txt translated_super_metadata.txt
+        code/local/local_extract_datasetlevel.sh . extracted_super_metadata.txt
+        code/local/local_translate_metadata.sh extracted_super_metadata.txt translated_super_metadata.txt
         datalad catalog add -c catalogdir -m translated_super_metadata.txt
         
         # Set new super id and version of catalog
