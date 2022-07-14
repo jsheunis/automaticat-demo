@@ -1,2 +1,0 @@
-datalad >= 0.16.0
-datalad-metalad >= 0.3.2
