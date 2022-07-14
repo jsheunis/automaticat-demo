@@ -8,3 +8,8 @@
 	url = https://github.com/psychoinformatics-de/studyforrest-data-freesurfer
 	datalad-id = 3304e775-5f5f-435a-b68e-d98c9f5fb72a
 	datalad-url = https://github.com/psychoinformatics-de/studyforrest-data-freesurfer
+[submodule "studyforrest-paper-speechannotation"]
+	path = studyforrest-paper-speechannotation
+	url = https://github.com/psychoinformatics-de/studyforrest-paper-speechannotation
+	datalad-id = 8d2eaa04-71a6-11ea-aca0-bc5ff42cf5b9
+	datalad-url = https://github.com/psychoinformatics-de/studyforrest-paper-speechannotation
