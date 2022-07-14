@@ -61,7 +61,7 @@ jobs:
           suffix="(dataset)"
           while read -r line; do
             echo "changed item: $line"
-            if [[ $line == *$prefix*$suffix* ]]; then
+            if [[ $line == *$prefix* && $line == *$suffix* ]]; then
               subds=${line#"$prefix"}
               subds=${subds%"$suffix"}
               echo "::set-output name=subds::$subds"
@@ -125,14 +125,15 @@ jobs:
         path: catalogbranch
     - name: Run workflow for extraction+translation+catalog-update
       run: |
+        chmod -R u+rwx fairly-big-catalog-workflow/*
         # Extract+translate+add metadata for new subdataset
-        /bin/zsh fairly-big-catalog-workflow/local/local_extract_datasetlevel.sh ${{needs.check.outputs.subds}} extracted_sub_metadata.txt
-        /bin/zsh fairly-big-catalog-workflow/local/local_translate_metadata.sh extracted_sub_metadata.txt translated_sub_metadata.txt
+        fairly-big-catalog-workflow/local/local_extract_datasetlevel.sh ${{needs.check.outputs.subds}} extracted_sub_metadata.txt
+        fairly-big-catalog-workflow/local/local_translate_metadata.sh extracted_sub_metadata.txt translated_sub_metadata.txt
         datalad catalog add -c catalogdir -m translated_sub_metadata.txt
 
         # Extract+translate+add metadata for updated version of superdataset
-        /bin/zsh fairly-big-catalog-workflow/local/local_extract_datasetlevel.sh . extracted_super_metadata.txt
-        /bin/zsh fairly-big-catalog-workflow/local/local_translate_metadata.sh extracted_super_metadata.txt translated_super_metadata.txt
+        fairly-big-catalog-workflow/local/local_extract_datasetlevel.sh . extracted_super_metadata.txt
+        fairly-big-catalog-workflow/local/local_translate_metadata.sh extracted_super_metadata.txt translated_super_metadata.txt
         datalad catalog add -c catalogdir -m translated_super_metadata.txt
         
         # Set new super id and version of catalog
