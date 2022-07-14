@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 # PREPARATION:
 # =. If it doesn't exist yet, create a mapping script that translates your metadata into the
 #    format expected by datalad catalog. See e.g. _core2catalog.sh, _studyminimeta2catalog.sh (these use jq)
