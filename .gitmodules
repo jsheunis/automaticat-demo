@@ -33,3 +33,8 @@
 	url = https://github.com/psychoinformatics-de/studyforrest-data-multires7t
 	datalad-id = 3a8648b3-7df8-413f-8efb-4d39040ac174
 	datalad-url = https://github.com/psychoinformatics-de/studyforrest-data-multires7t
+[submodule "studyforrest-data-visualrois"]
+	path = studyforrest-data-visualrois
+	url = https://github.com/psychoinformatics-de/studyforrest-data-visualrois
+	datalad-id = 92e65958-4a5a-4c34-a4f4-ee070f7a123b
+	datalad-url = https://github.com/psychoinformatics-de/studyforrest-data-visualrois
