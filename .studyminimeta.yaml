@@ -1,0 +1,58 @@
+#<!-- METADATA START --> # DO NOT DELETE THIS LINE
+# All example text is surrounded with <ex> and </ex>. Please replace the example
+# text including the <ex> and </ex> with your data. Delete all non-applicable
+# lines and sections.
+
+# Attention: indentation is important and must be preserved!
+
+# information on the study the to-be-archived dataset was created for
+
+# mandatory information on to-be-archived dataset
+dataset:
+  # short name or label
+  name: AutomatiCat
+
+  # current location of the dataset
+  location: https://github.com/jsheunis/automaticat-demo
+
+  # summary of purpose and content of the dataset
+  description:
+    The AutomatiCat dataset and catalog demonstrate automated integration of dataset management,
+    metadata extraction, and catalog generation using the free and open source DataLad ecosystem.
+    DataLad is used for decentralised management of data as lightweight, portable and extensible
+    representations. DataLad-Metalad then extracts structured high- and low-level metadata and
+    associates it with these datasets and their individual files. And at the end of the workflow,
+    Datalad-Catalog turns the structured metadata into the user-friendly data browser that you
+    are viewing now.
+
+  # optional list of employed standard and format
+  # for automatic generation of rich metadata records
+  # (see handbook for full list)
+
+  # optional list of keyword/phrase
+  keyword:
+    - automated
+    - continuous integration
+    - catalog
+    - data management
+    - metadata
+    - DataLad
+
+  # minimum of one dataset author required
+  author:
+    - a@fz-juelich.de
+
+  # optional list of entities that funded the creation of
+  # the dataset. This might also be a single value, i.e.:
+  #`` funding: NIH´´.
+  funding:
+    - Fund 1, abcdefg
+    - Fund 2, 7654321
+
+# person information, one record for every email-key used above
+person:
+  a@fz-juelich.de:
+     given_name: Stephan
+     last_name: Heunis
+
+#<!-- METADATA END -->  # DO NOT DELETE THIS LINE
