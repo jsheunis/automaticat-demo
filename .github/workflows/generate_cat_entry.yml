@@ -61,7 +61,7 @@ jobs:
           suffix="(dataset)"
           while read -r line; do
             echo "changed item: $line"
-            if [[ $line == *$prefix* && $line == *$suffix* ]]; then
+            if [[ "$line" == *"$prefix"* && "$line" == *"$suffix"* ]]; then
               subds=${line#"$prefix"}
               subds=${subds%"$suffix"}
               echo "::set-output name=subds::$subds"
