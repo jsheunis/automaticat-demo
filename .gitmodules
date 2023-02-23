@@ -43,3 +43,8 @@
 	url = https://github.com/psychoinformatics-de/studyforrest-data-retinotopy
 	datalad-id = 2d05f277-94b0-470b-8e11-4e56691d5b89
 	datalad-url = https://github.com/psychoinformatics-de/studyforrest-data-retinotopy
+[submodule "studyforrest-data"]
+	path = studyforrest-data
+	url = https://github.com/psychoinformatics-de/studyforrest-data.git
+	datalad-id = deabeb9b-7a37-4062-a1e0-8fcef7909609
+	datalad-url = https://github.com/psychoinformatics-de/studyforrest-data.git
