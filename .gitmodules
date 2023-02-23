@@ -1,8 +1,3 @@
-[submodule "studyforrest-paper-speechannotation"]
-	path = studyforrest-paper-speechannotation
-	url = https://github.com/psychoinformatics-de/studyforrest-paper-speechannotation
-	datalad-id = 8d2eaa04-71a6-11ea-aca0-bc5ff42cf5b9
-	datalad-url = https://github.com/psychoinformatics-de/studyforrest-paper-speechannotation
 [submodule "ds001499"]
 	path = ds001499
 	url = https://github.com/OpenNeuroDatasets/ds001499.git
