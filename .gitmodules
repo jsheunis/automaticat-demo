@@ -48,3 +48,8 @@
 	url = https://github.com/psychoinformatics-de/studyforrest-data.git
 	datalad-id = deabeb9b-7a37-4062-a1e0-8fcef7909609
 	datalad-url = https://github.com/psychoinformatics-de/studyforrest-data.git
+[submodule "ds001499"]
+	path = ds001499
+	url = https://github.com/OpenNeuroDatasets/ds001499.git
+	datalad-id = 3e874376-b053-11e8-b9ac-0242ac130026
+	datalad-url = https://github.com/OpenNeuroDatasets/ds001499.git
