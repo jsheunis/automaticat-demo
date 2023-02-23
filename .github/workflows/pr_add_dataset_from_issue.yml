@@ -54,6 +54,6 @@ jobs:
       uses: peter-evans/create-pull-request@v4
       with:
         branch: enh/action-add-dataset
-        commit-message: "Add subdataset - $(echo '${{ steps.issue-parser.outputs.jsonString }}' | jq -r '.url')"
-        title: "Add subdataset - $(echo '${{ steps.issue-parser.outputs.jsonString }}' | jq -r '.url')"
+        commit-message: "Add subdataset - '${{ steps.issue-parser.outputs.jsonString }}'"
+        title: "Add subdataset - '${{ steps.issue-parser.outputs.jsonString }}'"
         base: main
