@@ -123,23 +123,8 @@ jobs:
         # Get subdataset without data
         datalad get ${{needs.check.outputs.subds}} --no-data
 
-        # Ensure access to scripts
-        chmod -R u+rwx code/*
-        
-        # Extract+translate+add metadata for new subdataset
-        code/local/local_extract_datasetlevel.sh ${{needs.check.outputs.subds}} extracted_sub_metadata.txt
-        code/local/local_translate_metadata.sh extracted_sub_metadata.txt translated_sub_metadata.txt
-        datalad catalog add -c catalogbranch -m translated_sub_metadata.txt
-
-        # Extract+translate+add metadata for updated version of superdataset
-        code/local/local_extract_datasetlevel.sh . extracted_super_metadata.txt
-        code/local/local_translate_metadata.sh extracted_super_metadata.txt translated_super_metadata.txt
-        datalad catalog add -c catalogbranch -m translated_super_metadata.txt
-        
-        # Set new super id and version of catalog
-        SUPER_ID=$(git config -f .datalad/config datalad.dataset.id)
-        SUPER_VERSION=$(git rev-parse HEAD)
-        datalad catalog set-super -c catalogbranch -i "$SUPER_ID" -v "$SUPER_VERSION"
+        # Run workflow-update on new subdataset
+        datalad catalog workflow-update -d . -s ${{needs.check.outputs.subds}} -c catalogbranch
 
         # Commit and push to catalog branch
         cd catalogbranch
